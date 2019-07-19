@@ -1,0 +1,15 @@
+kind: pipeline
+name: Built Bot
+
+steps:
+- name: ROM
+  image: baalajimaestro/android_build:latest
+  environment:
+    TELEGRAM_TOKEN:
+      from_secret: TELEGRAM_TOKEN
+    TELEGRAM_CHAT:
+      from_secret: TELEGRAM_CHAT
+    GITHUB_TOKEN:
+      from_secret: GITHUB_TOKEN
+  commands:
+  - bash ./setup.sh

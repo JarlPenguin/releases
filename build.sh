@@ -40,8 +40,15 @@ export ci_url="$(echo "https://cloud.drone.io/$ci_repo/"$(cat /tmp/build_no)"/1/
 
 cd /home/ci
 
+git clone https://$GITHUB_USER:${GITHUB_TOKEN}@github.com/$GITHUB_USER/google-git-cookies.git > /dev/null 2>&1
+cd google-git-cookies
+bash setup_cookies.sh
+cd ../
+rm -rf google-git-cookies
+
 mkdir $ROM
 cd $ROM
+
 repo init -u $manifest_url -b pie --depth 1 > /dev/null 2>&1
 echo "Sync started for $manifest_url"
 telegram -M "Sync Started for [$ROM]($manifest_url)"

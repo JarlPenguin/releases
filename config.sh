@@ -1,18 +1,22 @@
 #!/bin/bash
 
-GITHUB_USER=Akianonymus
-GITHUB_EMAIL=anonymus.aki@gmail.com
+export GITHUB_USER=""
+export GITHUB_EMAIL=""
 
-KBUILD_BUILD_USER="Aki"
-KBUILD_BUILD_HOST="A_DEAD_PLANET"
+export KBUILD_BUILD_USER=""
+export KBUILD_BUILD_HOST=""
 
-device=harpia
+export device=""
 
-ROM="PixelExperience"
-manifest_url="https://github.com/PixelExperience/manifest"
-rom_vendor_name="aosp" # This represent the nams used by different rom vendors, Ex - aosp_harpia-userdebug, aosp is vendor name.
-branch="pie"
+export ROM=""
+export ROM_DIR=""
+export ROM_VERSION=""
+export local_manifest_url=""
+export manifest_url=""
+export rom_vendor_name=""
+export branch=""
+export bacon=""
 
-release_repo="Akianonymus/harpia_builds"
+export release_repo=""
 
-timezone="Asia/Kolkata"
+export timezone=""

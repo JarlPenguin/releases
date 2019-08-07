@@ -17,6 +17,8 @@ export rom_vendor_name=""
 export branch=""
 export bacon=""
 
+export jenkins=""
+
 export release_repo=""
 
 export timezone=""

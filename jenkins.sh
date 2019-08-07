@@ -3,9 +3,8 @@
 export GITHUB_TOKEN=""
 export TELEGRAM_TOKEN=""
 export TELEGRAM_CHAT=""
-export JENKINS_URL="$JENKINS_URL"
-
-if [ ! -d "$outdir" ]; then
+export BUILD_NUMBER=""
+if [ ! -d "$ROM_DIR"/out ]; then
 . clean.sh
 else
 . dirty.sh

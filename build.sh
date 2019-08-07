@@ -4,9 +4,9 @@ export outdir=""$ROM_DIR"/out/target/product/"$device""
 BUILD_START=$(date +"%s")
 echo "Build started"
 if [ "$jenkins" == "true" ] || [ "$jenkins" == "1" ]; then
-telegram -M "Build started: [See Progress]("$BUILD_URL"/console)"
+telegram -M "Build started for "$device": [See Progress]("$BUILD_URL"/console)"
 else
-telegram -M "Build started"
+telegram -M "Build started for "$device""
 fi
 . build/envsetup.sh
 lunch "$rom_vendor_name"_"$device"-userdebug

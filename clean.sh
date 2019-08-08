@@ -31,7 +31,5 @@ fi
 if [ ! -d ""$ROM_DIR"/.repo" ]; then
 repo init -u "$manifest_url" -b "$branch" --depth 1
 trim_darwin
-mkdir .repo/local_manifests
-wget "$local_manifest_url" -O .repo/local_manifests/manifest.xml
 fi
 source "$my_dir"/sync.sh

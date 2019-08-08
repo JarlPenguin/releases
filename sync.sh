@@ -2,6 +2,8 @@
 echo "Sync started for "$manifest_url"/tree/"$branch""
 telegram -M "Sync Started for ["$ROM" "$ROM_VERSION"]("$manifest_url"/tree/"$branch")"
 SYNC_START=$(date +"%s")
+mkdir -p .repo/local_manifests
+wget "$local_manifest_url" -O .repo/local_manifests/manifest.xml
 repo sync --force-sync --current-branch --no-tags --no-clone-bundle --optimized-fetch --prune -j$(nproc --all) -q -c
 export synccompletedsuccessfully=$?
 SYNC_END=$(date +"%s")

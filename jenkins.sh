@@ -1,5 +1,10 @@
 #!/bin/bash
-git pull
+export branch=$(git branch | grep \* | cut -d ' ' -f2)
+git fetch --all
+git checkout origin/"$branch"
+git branch -D "$branch"
+git checkout -b "$branch"
+export branch=""
 . config.sh
 export GITHUB_TOKEN=""
 export TELEGRAM_TOKEN=""

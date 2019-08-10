@@ -1,4 +1,5 @@
 #!/bin/bash
+git pull
 . config.sh
 export GITHUB_TOKEN=""
 export TELEGRAM_TOKEN=""

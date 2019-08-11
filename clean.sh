@@ -16,10 +16,8 @@ git config --global user.name "${GITHUB_USER}"
 
 mkdir -p "${ROM_DIR}"
 cd "${ROM_DIR}"
-if [ -d "${ROM_DIR}/out" ]; then
 make clean -j$(nproc --all)
 make clobber -j$(nproc --all)
-fi
 
 if [ ! -d "${ROM_DIR}/.repo" ]; then
 echo "Initializing repository..."

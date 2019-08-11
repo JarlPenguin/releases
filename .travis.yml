@@ -1,0 +1,14 @@
+language: C
+sudo: required
+before_install:
+  - sudo apt-get update
+  - sudo apt-get upgrade
+  - sudo apt install git
+before_script:
+  - git config --global user.name "Jarl-Penguin"
+  - git config --global user.email "jarlpenguin@outlook.com"
+script:
+  - cd $HOME
+  - git clone https://JarlPenguin:"$GITHUB_TOKEN"@github.com/JarlPenguin/releases.git
+  - cd releases
+  - source upstream.sh

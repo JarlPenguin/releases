@@ -20,7 +20,7 @@ jobs:
         git config --global user.email "${GITHUB_EMAIL}"
         git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/"${GITHUB_USER}"/releases.git
         cd releases
-        function upstream() { for var in cedric-los18 montana-aosp11 montana-aosp12 montana-los18 montana-los18-4.9 river-los17 river-pe12; do git checkout $var; git rebase master; git push -f; done; git checkout master; }
+        function upstream() { for var in twrp-montana; do git checkout $var; git rebase twrp-master; git push -f; done; git checkout twrp-master; }
         upstream
       env:
         GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}

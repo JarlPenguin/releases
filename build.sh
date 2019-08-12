@@ -10,6 +10,7 @@ telegram -M "Build started for "$device""
 fi
 . build/envsetup.sh
 lunch "$rom_vendor_name"_"$device"-userdebug
+rm -r $OUT/*201*.zip
 mka "$bacon"
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))

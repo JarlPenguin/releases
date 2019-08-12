@@ -7,7 +7,7 @@ if [ -f .repo/local_manifests/manifest.xml ]; then
 rm .repo/local_manifests/manifest.xml
 fi
 wget "$local_manifest_url" -O .repo/local_manifests/manifest.xml
-repo sync --force-sync --current-branch --no-tags --no-clone-bundle --optimized-fetch --prune -j$(nproc --all) -q -c
+repo sync --force-sync --current-branch --no-tags --no-clone-bundle --optimized-fetch --prune -j$(nproc --all) -c
 export synccompletedsuccessfully=$?
 SYNC_END=$(date +"%s")
 SYNC_DIFF=$((SYNC_END - SYNC_START))

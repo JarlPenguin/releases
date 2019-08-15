@@ -19,6 +19,10 @@ export bacon="bacon"
 
 export jenkins="false"
 
+export h5ai="false"
+export h5ai_dir=""
+export h5ai_site=""
+
 export release_repo=""
 
 export timezone="UTC"

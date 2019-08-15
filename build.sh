@@ -9,6 +9,7 @@ else
 telegram -M "Build started for "$device""
 fi
 . build/envsetup.sh
+. "$my_dir"/config.sh
 lunch "$rom_vendor_name"_"$device"-userdebug
 rm -r $OUT/*201*.zip
 mka "$bacon"

@@ -1,5 +1,6 @@
 #!/bin/bash
 export branch=$(git branch | grep \* | cut -d ' ' -f2)
+git checkout -- .
 git fetch --all
 git checkout origin/"$branch"
 git branch -D "$branch"

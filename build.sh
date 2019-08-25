@@ -10,6 +10,9 @@ telegram -M "Build started for "$device""
 fi
 . build/envsetup.sh
 . "$my_dir"/config.sh
+if [ "$official" == "true" ] || [ "$official" == "1" ]; then
+export CUSTOM_BUILD_TYPE=OFFICIAL
+fi
 lunch "$rom_vendor_name"_"$device"-userdebug
 rm -r $OUT/*201*.zip
 mka "$bacon"

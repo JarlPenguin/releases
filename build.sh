@@ -27,22 +27,15 @@ if [ -e "$finalzip_path" ]; then
 
     echo "Uploading"
 
-    if [ "$h5ai" != "true" ] && [ "$h5ai" != "1" ]; then
     github-release "$release_repo" "$tag" "master" ""$ROM" for "$device"
 
 Date: $(env TZ="$timezone" date)" "$finalzip_path"
 
     echo "Uploaded"
+
     telegram -M "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds
 
 Download: ["$zip_name"](https://github.com/"$release_repo"/releases/download/"$tag"/"$zip_name")"
-    else
-    mkdir -p "$h5ai_dir"/"$ROM"-"$ROM_VERSION"/
-    sudo cp "$finalzip_path" "$h5ai_dir"/"$ROM"-"$ROM_VERSION"/
-    telegram -M "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds
-
-Download: ["$zip_name"]("$h5ai_site"/"$ROM"-"$ROM_VERSION"/"$zip_name")"
-    fi
 
 else
     echo "Build failed in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"

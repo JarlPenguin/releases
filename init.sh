@@ -9,6 +9,9 @@ rm -rf scripts
 sudo apt purge openjdk-11* -y
 sudo apt install openjdk-8-jdk -y
 cd "$my_dir"
-sudo install telegram /usr/bin/
-sudo install github-release /usr/bin/
+if [ ! -f /usr/bin/telegram ]; then
+sudo install telegram /usr/bin
+elif [ ! -f /usr/bin/github-release ]; then
+sudo install github-release /usr/bin
+fi
 . clean.sh

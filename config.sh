@@ -3,9 +3,6 @@
 export GITHUB_USER=""
 export GITHUB_EMAIL=""
 
-export KBUILD_BUILD_USER=""
-export KBUILD_BUILD_HOST="builder"
-
 export device=""
 
 export ROM=""

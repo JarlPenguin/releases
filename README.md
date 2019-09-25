@@ -12,17 +12,17 @@
 
 1. Clone your fork of this repository.
 
-2. Make your changes in the config.sh script (more information about the flags below.
+2. Make your changes in the config.sh script (more information about the flags below).
 
-3. If you're just starting, open a terminal in the directory you cloned this repository.
+3. If you haven't ever built Android on your PC, open a terminal in the directory you cloned this repository.
 
 3a. Run `init.sh`
 
-4. If you've already built Android, run `clean.sh`
+4. If you've already built Android on your PC, run `clean.sh`
 
 ## How to use this repo (Jenkins)
 
-1. Switch to your "jenkins" user (usually by `su jenkins`)
+1. Switch to the "jenkins" user (usually by `su jenkins`)
 
 2. Clone your fork of this repo in your Jenkins home directory (`/var/lib/jenkins`) or any place where your Jenkins user can read/write to.
 

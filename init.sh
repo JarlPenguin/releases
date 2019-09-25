@@ -1,8 +1,10 @@
 #!/bin/bash
 export my_dir=$(pwd)
 cd ~
+echo "Downloading dependencies..."
 git clone https://github.com/akhilnarang/scripts --depth 1
 cd scripts
+echo "Installing dependencies..."
 . setup/android_build_env.sh
 cd ..
 rm -rf scripts
@@ -14,4 +16,5 @@ sudo install telegram /usr/bin
 elif [ ! -f /usr/bin/github-release ]; then
 sudo install github-release /usr/bin
 fi
+echo "Starting build process..."
 . clean.sh

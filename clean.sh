@@ -2,6 +2,7 @@
 
 export my_dir=$(pwd)
 
+echo "Loading configuration..."
 source "$my_dir"/config.sh
 
 # Email for git
@@ -29,6 +30,7 @@ make clobber -j$(nproc --all)
 fi
 
 if [ ! -d ""$ROM_DIR"/.repo" ]; then
+echo "Initializing repository..."
 repo init -u "$manifest_url" -b "$branch" --depth 1
 trim_darwin
 fi

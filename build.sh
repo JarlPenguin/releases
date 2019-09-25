@@ -2,7 +2,7 @@
 
 export outdir=""$ROM_DIR"/out/target/product/"$device""
 BUILD_START=$(date +"%s")
-echo "Build started"
+echo "Build started for "$device""
 if [ "$jenkins" == "true" ] || [ "$jenkins" == "1" ]; then
 telegram -M "Build "$BUILD_DISPLAY_NAME" started for "$device": [See Progress]("$BUILD_URL"console)"
 else

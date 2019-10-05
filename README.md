@@ -6,7 +6,7 @@
 
 2. Fork this repository.
 
-3. Make a GitHub token with proper permissions for uploading repositories.
+3. Make a GitHub token with proper permissions for uploading releases to your repositories.
 
 ## How to use this repo (non-Jenkins)
 
@@ -14,9 +14,7 @@
 
 2. Make your changes in the config.sh script (more information about the flags below).
 
-3. If you haven't ever built Android on your PC, open a terminal in the directory you cloned this repository.
-
-3a. Run `init.sh`
+3. If you haven't ever built Android on your PC, open a terminal in the directory you cloned this repository and run `init.sh`
 
 4. If you've already built Android on your PC, run `clean.sh`
 
@@ -36,7 +34,7 @@
 
 7. Copy the contents of jenkins.sh to it.
 
-8. Change TELEGRAM_CHAT, TELEGRAM_TOKEN and GITHUB_TOKEN to your respective values:
+8. Change the values of TELEGRAM_CHAT, TELEGRAM_TOKEN and GITHUB_TOKEN to your respective values:
 
 * `TELEGRAM_CHAT` - the ID of the channel/group chat you want the Bot to post your messages to.
 
@@ -58,7 +56,7 @@
 
 `ROM_VERSION` - version of your ROM (e.g. `9.0 Pie`)
 
-`official` - `true` or `1` - you're building an official build, `false` or `0` - you're building an unofficial build
+`official` - `true` or `1` - you're building an official build; `false` or `0` - you're building an unofficial build
 
 `local_manifest_url` - your local manifest URL (e.g. `https://example.link/local_manifest.xml`)
 
@@ -70,7 +68,7 @@
 
 `bacon` - the package to build (default: `bacon`)
 
-`jenkins` - `true` or `1` - you use Jenkins, `false` or `0` - you don't use Jenkins
+`jenkins` - `true` or `1` - you use Jenkins; `false` or `0` - you don't use Jenkins
 
 `release_repo` - your GitHub username + name of the repo to upload the releases (e.g. `JarlPenguin/releases`)
 

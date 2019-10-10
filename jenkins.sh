@@ -7,16 +7,16 @@ sudo install github-release /usr/bin
 fi
 git checkout -- .
 git fetch --all
-git checkout origin/"$branch"
-git branch -D "$branch"
-git checkout -b "$branch"
-. config.sh
+git checkout origin/"${branch}"
+git branch -D "${branch}"
+git checkout -b "${branch}"
+source config.sh
 export GITHUB_TOKEN=""
 export TELEGRAM_TOKEN=""
 export TELEGRAM_CHAT=""
 export BUILD_NUMBER=""
-if [ ! -d "$ROM_DIR"/out ]; then
-. clean.sh
+if [ ! -d "${ROM_DIR}/out" ]; then
+source clean.sh
 else
-. dirty.sh
+source dirty.sh
 fi

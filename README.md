@@ -50,7 +50,7 @@
 
 `device` - your device codename (e.g. `blueline` for Pixel 3)
 
-`ROM` - name of your ROM (e.g. `AOSP`)
+`ROM` - name of your ROM (e.g. `AOSP`) **Do NOT include spaces in your ROM name (it'll cause a Telegram error)**
 
 `ROM_DIR` - directory where your ROM source will reside (e.g. `/var/lib/jenkins/AOSP`)
 

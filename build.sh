@@ -14,7 +14,9 @@ if [ "${official}" == "true" ] || [ "${official}" == "1" ]; then
 export CUSTOM_BUILD_TYPE="OFFICIAL"
 fi
 lunch "${rom_vendor_name}_${device}-userdebug"
+if [ -f "${OUT}/*201*.zip" ]; then
 rm -r "${OUT}/*201*.zip"
+fi
 mka "${bacon}"
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))

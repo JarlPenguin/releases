@@ -1,9 +1,9 @@
 #!/bin/bash
 export branch=$(git branch | grep \* | cut -d ' ' -f2)
 if [ ! -f /usr/bin/telegram ]; then
-sudo install telegram /usr/bin
+    sudo install telegram /usr/bin
 elif [ ! -f /usr/bin/github-release ]; then
-sudo install github-release /usr/bin
+    sudo install github-release /usr/bin
 fi
 git checkout -- .
 git fetch --all
@@ -16,7 +16,7 @@ export TELEGRAM_TOKEN=""
 export TELEGRAM_CHAT=""
 export BUILD_NUMBER=""
 if [ ! -d "${ROM_DIR}/out" ]; then
-source clean.sh
+    source clean.sh
 else
-source dirty.sh
+    source dirty.sh
 fi

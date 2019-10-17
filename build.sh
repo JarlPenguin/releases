@@ -15,6 +15,7 @@ if [ "${official}" == "true" ] || [ "${official}" == "1" ]; then
 fi
 lunch "${rom_vendor_name}_${device}-userdebug"
 rm "${outdir}"/*201*.zip
+rm "${outdir}"/*201*.zip.md5
 mka "${bacon}"
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))

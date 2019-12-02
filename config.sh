@@ -14,6 +14,7 @@ export manifest_url=""
 export rom_vendor_name=""
 export branch=""
 export bacon="bacon"
+export buildtype=""
 
 export jenkins="false"
 

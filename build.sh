@@ -13,7 +13,10 @@ source "${my_dir}/config.sh"
 if [ "${official}" == "true" ] || [ "${official}" == "1" ]; then
     export CUSTOM_BUILD_TYPE="OFFICIAL"
 fi
-lunch "${rom_vendor_name}_${device}-userdebug"
+if [ -z "${buildtype}" ]; then
+    export buildtype="userdebug"
+fi
+lunch "${rom_vendor_name}_${device}-${buildtype}"
 rm "${outdir}"/*201*.zip
 rm "${outdir}"/*201*.zip.md5
 mka "${bacon}"

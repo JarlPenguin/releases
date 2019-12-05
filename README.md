@@ -1,5 +1,7 @@
 # Build scripts
 
+**DISCLAIMER**: This is only for Debian-based distributions. WSL is **NOT** supported.
+
 ## Prerequisites
 
 1. Make a Telegram Bot (@BotFather)

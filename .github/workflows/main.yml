@@ -1,0 +1,28 @@
+name: Upstream
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Automatic upstream
+    runs-on: ubuntu-16.04
+    steps:
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install git
+    - name: Upstream branches
+      run: |
+        git config --global user.name "${GITHUB_USER}"
+        git config --global user.email "${GITHUB_EMAIL}"
+        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/"${GITHUB_USER}"/releases.git
+        cd releases
+        function upstream() { for var in montana-pe9plus montana-los15 cactus-los16 cereus-los16 montana-los16 montana-carbon7; do git checkout $var; git rebase master; git push -f; done; git checkout master; }
+        upstream
+      env:
+        GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_KEY }}
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}

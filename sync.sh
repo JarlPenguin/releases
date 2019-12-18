@@ -2,12 +2,20 @@
 echo "Sync started for ${manifest_url}/tree/${branch}"
 telegram -M "Sync started for [${ROM} ${ROM_VERSION}](${manifest_url}/tree/${branch})"
 SYNC_START=$(date +"%s")
-if [ "${official}" != "true" ] && [ "${official}" != "1" ]; then
-    mkdir -p .repo/local_manifests
-if [ -f .repo/local_manifests/manifest.xml ]; then
-    rm .repo/local_manifests/manifest.xml
+if [ "${local_manifest_url}" == *.xml* ]; then
+    localmanifestisrepo=false
 fi
-    wget "${local_manifest_url}" -O .repo/local_manifests/manifest.xml
+if [ "${official}" != "true" ] && [ "${official}" != "1" ]; then
+    if [ "${localmanifestisrepo}" == "false" ]; then
+        mkdir -p .repo/local_manifests
+        if [ -f .repo/local_manifests/manifest.xml ]; then
+            rm .repo/local_manifests/manifest.xml
+        fi
+        wget "${local_manifest_url}" -O .repo/local_manifests/manifest.xml
+    else
+        rm -r .repo/local_manifests
+        git clone "${local_manifest_url}" --depth 1 .repo/local_manifests
+    fi
 fi
 repo sync --force-sync --current-branch --no-tags --no-clone-bundle --optimized-fetch --prune -j$(nproc --all) -c
 export syncsuccessful="${?}"

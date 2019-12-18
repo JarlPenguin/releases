@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-1. Make a Telegram Bot (@BotFather)
+1. (Optional) Make a Telegram Bot (@BotFather)
 
 2. Fork this repository.
 
@@ -20,13 +20,13 @@
 
 4. If you've already built Android on your PC, run `clean.sh`
 
-5. Export TELEGRAM_CHAT, TELEGRAM_TOKEN and GITHUB_TOKEN to your respective values:
+5. Export GITHUB_TOKEN to your GitHub token (make sure it has permissions to upload releases to your repos)
+
+6. Optionally export TELEGRAM_CHAT and TELEGRAM_TOKEN to your respective values:
 
 * `TELEGRAM_CHAT` - the ID of the channel/group chat you want the Bot to post your messages to.
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
-
-* `GITHUB_TOKEN` - your GitHub token (make sure it has permissions to upload releases to your repos)
 
 
 ## How to use this repo (Jenkins)
@@ -47,13 +47,13 @@
 
 8. Copy the contents of jenkins.sh to it.
 
-9. Change the values of TELEGRAM_CHAT, TELEGRAM_TOKEN and GITHUB_TOKEN to your respective values:
+9. Change the values of GITHUB_TOKEN and optionally TELEGRAM_CHAT, TELEGRAM_TOKEN to your respective values:
+
+* `GITHUB_TOKEN` - your GitHub token (make sure it has permissions to upload releases to your repos)
 
 * `TELEGRAM_CHAT` - the ID of the channel/group chat you want the Bot to post your messages to.
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
-
-* `GITHUB_TOKEN` - your GitHub token (make sure it has permissions to upload releases to your repos)
 
 ## Configuration flags
 

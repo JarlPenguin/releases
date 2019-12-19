@@ -5,7 +5,7 @@ SYNC_START=$(date +"%s")
 if [ "${local_manifest_url}" == *.xml* ]; then
     localmanifestisrepo=false
 fi
-if [ "${official}" != "true" ] && [ "${official}" != "1" ]; then
+if [ "${official}" != "true" ]; then
     if [ "${localmanifestisrepo}" == "false" ]; then
         mkdir -p .repo/local_manifests
         if [ -f .repo/local_manifests/manifest.xml ]; then
@@ -18,7 +18,7 @@ if [ "${official}" != "true" ] && [ "${official}" != "1" ]; then
     fi
 fi
 repo sync --force-sync --current-branch --no-tags --no-clone-bundle --optimized-fetch --prune -j$(nproc --all) -c
-export syncsuccessful="${?}"
+syncsuccessful="${?}"
 SYNC_END=$(date +"%s")
 SYNC_DIFF=$((SYNC_END - SYNC_START))
 if [ "${syncsuccessful}" == "0" ]; then

@@ -69,7 +69,7 @@
 
 `ROM_VERSION` - version of your ROM (e.g. `9.0 Pie`)
 
-`official` - `true` or `1` if you're building an official build, `false` or `0` if you're building an unofficial build
+`official` - `true` if you're building an official build, `false` if you're building an unofficial build
 
 `local_manifest_url` - your local manifest URL (e.g. `https://example.link/local_manifest.xml` or `https://github.com/local_manifest/local_manifest`)
 
@@ -83,7 +83,7 @@
 
 `buildtype` - the build type to build (e.g. `userdebug`). If you don't specify a build type, it defaults to userdebug.
 
-`jenkins` - `true` or `1` - you use Jenkins; `false` or `0` - you don't use Jenkins
+`jenkins` - `true` - you use Jenkins; `false` - you don't use Jenkins
 
 `release_repo` - your GitHub username + name of the repo to upload the releases (e.g. `JarlPenguin/releases`)
 

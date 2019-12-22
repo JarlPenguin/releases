@@ -16,17 +16,19 @@
 
 2. Make your changes in the config.sh script (more information about the flags below). Make sure you commit and push your changes to your fork.
 
-3. If you haven't ever built Android on your PC, open a terminal in the directory you cloned this repository and run `init.sh`
+3. Export GITHUB_TOKEN to your GitHub token (make sure it has permissions to upload releases to your repos)
 
-4. If you've already built Android on your PC, run `clean.sh`
-
-5. Export GITHUB_TOKEN to your GitHub token (make sure it has permissions to upload releases to your repos)
-
-6. Optionally export TELEGRAM_CHAT and TELEGRAM_TOKEN to your respective values:
+4. Optionally export TELEGRAM_CHAT and TELEGRAM_TOKEN to your respective values:
 
 * `TELEGRAM_CHAT` - the ID of the channel/group chat you want the Bot to post your messages to.
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
+
+4. If you haven't ever built Android on your PC, open a terminal in the directory you cloned this repository and run `init.sh`
+
+OR
+
+4. If you've already built Android on your PC, run `clean.sh`
 
 
 ## How to use this repo (Jenkins)

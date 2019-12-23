@@ -85,6 +85,8 @@ OR
 
 `buildtype` - the build type to build (e.g. `userdebug`). If you don't specify a build type, it defaults to userdebug.
 
+`installclean` - `true` if you want clean system/ and vendor/ directories, `false` if you want a dirty build
+
 `jenkins` - `true` - you use Jenkins; `false` - you don't use Jenkins
 
 `release_repo` - your GitHub username + name of the repo to upload the releases (e.g. `JarlPenguin/releases`)

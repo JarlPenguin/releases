@@ -15,6 +15,7 @@ export rom_vendor_name=""
 export branch=""
 export bacon="bacon"
 export buildtype=""
+export installclean=""
 
 export jenkins="false"
 

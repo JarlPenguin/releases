@@ -23,6 +23,9 @@ jobs:
         export thisyear=$(date +%Y)
         export nextyear=$((thisyear + 1))
         sed -i "s|${thisyear}|${nextyear}|g" build.sh
+        git add build.sh
+        git commit -s -m "build: it's ${nextyear} time"
+        git push
       env:
         GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_KEY }}

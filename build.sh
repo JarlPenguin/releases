@@ -17,8 +17,8 @@ if [ -z "${buildtype}" ]; then
     export buildtype="userdebug"
 fi
 lunch "${rom_vendor_name}_${device}-${buildtype}"
-rm "${outdir}"/*201*.zip
-rm "${outdir}"/*201*.zip.md5
+rm "${outdir}"/*2020*.zip
+rm "${outdir}"/*2020*.zip.md5
 if [ "${installclean}" == "true" ]; then
     mka installclean
 fi

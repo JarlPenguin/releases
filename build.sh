@@ -26,7 +26,7 @@ mka "${bacon}"
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))
 
-export finalzip_path=$(ls "${outdir}"/*201*.zip | tail -n -1)
+export finalzip_path=$(ls "${outdir}"/*2020*.zip | tail -n -1)
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
 export tag=$( echo "${zip_name}-$(date +%H%m)" | sed 's|.zip||')
 if [ -e "${finalzip_path}" ]; then

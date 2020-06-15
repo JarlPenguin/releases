@@ -1,6 +1,10 @@
 #!/bin/bash
 echo "Sync started for ${manifest_url}/tree/${branch}"
-telegram -M "Sync started for [${ROM} ${ROM_VERSION}](${manifest_url}/tree/${branch})"
+if [ "${jenkins}" == "true" ]; then
+    telegram -M "Sync started for [${ROM} ${ROM_VERSION}](${manifest_url}/tree/${branch}): [See Progress](${BUILD_URL}console)"
+else
+    telegram -M "Sync started for [${ROM} ${ROM_VERSION}](${manifest_url}/tree/${branch})"
+fi
 SYNC_START=$(date +"%s")
 if [[ "${local_manifest_url}" == *".xml"* ]]; then
     localmanifestisrepo=false

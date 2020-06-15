@@ -57,6 +57,8 @@ OR
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
 
+10. Switch to the root user and install the binaries in the `bin` folder to `/usr/bin`.
+
 ## Configuration flags
 
 `GITHUB_USER` - your GitHub username

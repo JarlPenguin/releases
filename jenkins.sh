@@ -1,10 +1,5 @@
 #!/bin/bash
 export branch=$(git branch | grep \* | cut -d ' ' -f2)
-if [ ! -f /usr/bin/telegram ]; then
-    sudo install bin/telegram /usr/bin
-elif [ ! -f /usr/bin/github-release ]; then
-    sudo install bin/github-release /usr/bin
-fi
 git checkout -- .
 git fetch --all
 git checkout origin/"${branch}"

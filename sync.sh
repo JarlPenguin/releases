@@ -17,7 +17,11 @@ if [ "${official}" != "true" ]; then
         git clone "${local_manifest_url}" --depth 1 .repo/local_manifests
     fi
 fi
-repo sync --force-sync --current-branch --no-tags --no-clone-bundle --optimized-fetch --prune -j$(nproc --all) -c
+cores=$(nproc --all)
+if [ "${cores}" -gt "12" ]; then
+    cores=12
+fi
+repo sync --force-sync --current-branch --no-tags --no-clone-bundle --optimized-fetch --prune "-j${cores}" -c
 syncsuccessful="${?}"
 SYNC_END=$(date +"%s")
 SYNC_DIFF=$((SYNC_END - SYNC_START))

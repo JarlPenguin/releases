@@ -19,7 +19,10 @@ fi
 lunch "${rom_vendor_name}_${device}-${buildtype}"
 rm "${outdir}"/*2020*.zip
 rm "${outdir}"/*2020*.zip.md5
-if [ "${installclean}" == "true" ]; then
+if [ "${clean}" == "clean" ]; then
+    mka clean
+    mka clobber
+elif [ "${clean}" == "installclean" ]; then
     mka installclean
 fi
 mka "${bacon}"

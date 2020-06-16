@@ -87,7 +87,7 @@ OR
 
 `buildtype` - the build type to build (e.g. `userdebug`). If you don't specify a build type, it defaults to userdebug.
 
-`installclean` - `true` if you want clean system/ and vendor/ directories, `false` if you want a dirty build
+`clean` - `installclean` if you want to clear system/ and vendor/ directories, `clean` if you want a clean build, `false` if you want a dirty build
 
 `jenkins` - `true` - you use Jenkins; `false` - you don't use Jenkins
 

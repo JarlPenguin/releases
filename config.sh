@@ -25,4 +25,4 @@ export jenkins="true"
 
 export release_repo="JarlPenguin/releases"
 
-export timezone="Seoul"
+export timezone="UTC"

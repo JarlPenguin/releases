@@ -16,6 +16,13 @@ fi
 if [ -z "${buildtype}" ]; then
     export buildtype="userdebug"
 fi
+if [ "${ccache}" == "true" ] && [ "${ccache_size}" ! -z ]; then
+    export USE_CCACHE=1
+    ccache -M "${ccache_size}G"
+elif [ "${ccache}" == "true" ] && [ "${ccache_size}" -z ]; then
+    echo "Please set the ccache_size variable in your config."
+    exit 1
+fi
 lunch "${rom_vendor_name}_${device}-${buildtype}"
 rm "${outdir}"/*2020*.zip
 rm "${outdir}"/*2020*.zip.md5

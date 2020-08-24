@@ -89,6 +89,10 @@ OR
 
 `clean` - `installclean` if you want to clear system/ and vendor/ directories, `clean` if you want a clean build, `false` if you want a dirty build
 
+`ccache` - `true` if you want to build with ccache, `false` if you don't
+
+`ccache_size` - how many gigabytes of space to dedicate to ccache (e.g. `50`).
+
 `jenkins` - `true` - you use Jenkins; `false` - you don't use Jenkins
 
 `release_repo` - your GitHub username + name of the repo to upload the releases (e.g. `JarlPenguin/releases`)

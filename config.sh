@@ -17,6 +17,9 @@ export bacon="bacon"
 export buildtype=""
 export clean=""
 
+export ccache=""
+export ccache_size=""
+
 export jenkins="false"
 
 export release_repo=""

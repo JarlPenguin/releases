@@ -6,20 +6,12 @@ else
     telegram -M "Sync started for [${ROM} ${ROM_VERSION}](${manifest_url}/tree/${branch})"
 fi
 SYNC_START=$(date +"%s")
-if [[ "${local_manifest_url}" == *".xml"* ]]; then
-    localmanifestisrepo=false
-fi
 if [ "${official}" != "true" ]; then
-    if [ "${localmanifestisrepo}" == "false" ]; then
-        mkdir -p .repo/local_manifests
-        if [ -f .repo/local_manifests/manifest.xml ]; then
-            rm .repo/local_manifests/manifest.xml
-        fi
-        wget "${local_manifest_url}" -O .repo/local_manifests/manifest.xml
-    else
-        rm -r .repo/local_manifests
-        git clone "${local_manifest_url}" --depth 1 .repo/local_manifests
+    mkdir -p .repo/local_manifests
+    if [ -f .repo/local_manifests/manifest.xml ]; then
+        rm .repo/local_manifests/manifest.xml
     fi
+    wget "${local_manifest_url}" -O .repo/local_manifests/manifest.xml
 fi
 cores=$(nproc --all)
 if [ "${cores}" -gt "12" ]; then

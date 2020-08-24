@@ -16,7 +16,7 @@ fi
 if [ -z "${buildtype}" ]; then
     export buildtype="userdebug"
 fi
-if [ "${ccache}" == "true" ] && [ ! -z "${ccache_size}" ]; then
+if [ "${ccache}" == "true" ] && [ -n "${ccache_size}" ]; then
     export USE_CCACHE=1
     ccache -M "${ccache_size}G"
 elif [ "${ccache}" == "true" ] && [ -z "${ccache_size}" ]; then

@@ -16,10 +16,10 @@ fi
 if [ -z "${buildtype}" ]; then
     export buildtype="userdebug"
 fi
-if [ "${ccache}" == "true" ] && [ "${ccache_size}" ! -z ]; then
+if [ "${ccache}" == "true" ] && [ ! -z "${ccache_size}" ]; then
     export USE_CCACHE=1
     ccache -M "${ccache_size}G"
-elif [ "${ccache}" == "true" ] && [ "${ccache_size}" -z ]; then
+elif [ "${ccache}" == "true" ] && [ -z "${ccache_size}" ]; then
     echo "Please set the ccache_size variable in your config."
     exit 1
 fi

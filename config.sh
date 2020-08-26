@@ -16,6 +16,7 @@ export branch=""
 export bacon="bacon"
 export buildtype=""
 export clean=""
+export upload_recovery=""
 
 export ccache=""
 export ccache_size=""

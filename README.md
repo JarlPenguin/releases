@@ -89,6 +89,8 @@ OR
 
 `clean` - `installclean` if you want to clear system/ and vendor/ directories, `clean` if you want a clean build, `false` if you want a dirty build
 
+`upload_recovery` - `true` if you want the script to upload the built recovery image, `false` if you don't want the script to upload the recovery image
+
 `ccache` - `true` if you want to build with ccache, `false` if you don't
 
 `ccache_size` - how many gigabytes of space to dedicate to ccache (e.g. `50`).

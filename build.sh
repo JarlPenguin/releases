@@ -37,6 +37,9 @@ BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))
 
 export finalzip_path=$(ls "${outdir}"/*2020*.zip | tail -n -1)
+if [ "${upload_recovery}" == "true" ]; then
+    export img_path=$(ls "${outdir}"/recovery.img | tail -n -1)
+fi
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
 export tag=$( echo "${zip_name}-$(date +%H%M)" | sed 's|.zip||')
 if [ -e "${finalzip_path}" ]; then
@@ -47,12 +50,30 @@ if [ -e "${finalzip_path}" ]; then
     github-release "${release_repo}" "${tag}" "master" "${ROM} for ${device}
 
 Date: $(env TZ="${timezone}" date)" "${finalzip_path}"
+    if [ "${upload_recovery}" == "true" ]; then
+        if [ -e "${img_path}" ]; then
+            github-release "${release_repo}" "${tag}" "master" "${ROM} for ${device}
 
+Date: $(env TZ="${timezone}" date)" "${img_path}"
+        else
+            echo "Build failed in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
+            telegram -N -M "Build failed in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
+            curl --data parse_mode=HTML --data chat_id=$TELEGRAM_CHAT --data sticker=CAADBQADGgEAAixuhBPbSa3YLUZ8DBYE --request POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendSticker
+            exit 1
+        fi
+    fi
     echo "Uploaded"
 
-    telegram -M "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds
+    if [ "${upload_recovery}" == "true" ]; then
+        telegram -M "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds
+
+Download ROM: ["${zip_name}"]("https://github.com/${release_repo}/releases/download/${tag}/${zip_name}")
+Download recovery: ["recovery.img"]("https://github.com/${release_repo}/releases/download/${tag}/recovery.img")"
+    else
+        telegram -M "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds
 
 Download: ["${zip_name}"]("https://github.com/${release_repo}/releases/download/${tag}/${zip_name}")"
+    fi
 curl --data parse_mode=HTML --data chat_id=$TELEGRAM_CHAT --data sticker=CAADBQADGgEAAixuhBPbSa3YLUZ8DBYE --request POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendSticker
 
 else

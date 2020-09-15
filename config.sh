@@ -3,7 +3,7 @@
 export GITHUB_USER="JarlPenguin"
 export GITHUB_EMAIL="jarlpenguin@gmail.com"
 
-export device="montana"
+export device="cedric"
 
 export ROM="LineageOS"
 export ROM_DIR="/var/lib/jenkins/los17"

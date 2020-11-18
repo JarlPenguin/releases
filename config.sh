@@ -6,7 +6,7 @@ export GITHUB_EMAIL="jarlpenguin@gmail.com"
 export device="montana"
 
 export ROM="LineageOS"
-export ROM_DIR="/var/lib/jenkins/los17"
+export ROM_DIR="${WORKSPACE}/los17-montana"
 export ROM_VERSION="17.1"
 export official="false"
 export local_manifest_url="https://github.com/JarlPenguin/manifests/raw/master/lineage/17.x/msm8937-common.xml"
@@ -25,4 +25,4 @@ export jenkins="true"
 
 export release_repo="JarlPenguin/releases"
 
-export timezone="Seoul"
+export timezone="UTC"

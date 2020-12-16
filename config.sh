@@ -16,7 +16,7 @@ export branch="lineage-17.1"
 export bacon="bacon"
 export buildtype=""
 export clean="installclean"
-export upload_recovery=""
+export upload_recovery="true"
 
 export ccache="true"
 export ccache_size="100"

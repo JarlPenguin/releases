@@ -14,8 +14,6 @@ fi
 git config --global user.email "${GITHUB_EMAIL}"
 git config --global user.name "${GITHUB_USER}"
 
-cd ~
-
 if [ ! -d "${ROM_DIR}" ]; then
 mkdir "${ROM_DIR}"
 fi

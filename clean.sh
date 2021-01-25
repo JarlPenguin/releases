@@ -14,9 +14,7 @@ fi
 git config --global user.email "${GITHUB_EMAIL}"
 git config --global user.name "${GITHUB_USER}"
 
-if [ ! -d "${ROM_DIR}" ]; then
-mkdir "${ROM_DIR}"
-fi
+mkdir -p "${ROM_DIR}"
 cd "${ROM_DIR}"
 if [ -d "${ROM_DIR}/out" ]; then
 make clean -j$(nproc --all)

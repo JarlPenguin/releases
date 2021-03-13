@@ -2,7 +2,7 @@ name: Update year
 
 on:
   schedule:
-    - cron: '50 23 31 12 *'
+    - cron: '30 23 31 12 *'
 
 
 jobs:

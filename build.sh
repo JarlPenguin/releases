@@ -30,8 +30,6 @@ if [ "${clean}" == "clean" ]; then
 elif [ "${clean}" == "installclean" ]; then
     mka installclean
 fi
-mka api-stubs-docs-non-updatable-update-current-api
-mka api-stubs-docs-update-current-api
 mka dist
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))

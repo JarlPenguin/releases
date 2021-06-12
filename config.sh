@@ -6,7 +6,7 @@ export GITHUB_EMAIL="jarlpenguin@gmail.com"
 export device="river"
 
 export ROM="Pixel Experience"
-export ROM_DIR="${WORKSPACE}/pe11"
+export ROM_DIR="${WORKSPACE}/../PixelExperience-eleven/work/rom"
 export ROM_VERSION="11"
 export official="false"
 export local_manifest_url="https://raw.githubusercontent.com/JarlPenguin/manifests/master/pe/11/river.xml"

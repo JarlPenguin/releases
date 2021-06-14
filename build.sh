@@ -35,7 +35,7 @@ mka api-stubs-docs-update-current-api
 mka "${bacon}"
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))
-export finalzip_path=$(ls "${ROM_DIR}"/out/dist/aosp_river-retrofit-ota-eng.kiam001.zip | tail -n -1)
+export finalzip_path=$(ls "${ROM_DIR}"/out/dist/aosp_river-ota-retrofit-eng.kiam001.zip | tail -n -1)
 export zip_name=$(echo "${finalzip_path}" | sed "s|${ROM_DIR}/out/dist/||")
 export tag=$( echo "${zip_name}-$(date +%H%M)" | sed 's|.zip||')
 if [ -e "${finalzip_path}" ]; then

@@ -30,25 +30,13 @@ if [ "${clean}" == "clean" ]; then
 elif [ "${clean}" == "installclean" ]; then
     mka installclean
 fi
-mka "${bacon}"
+mka dist
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))
-export finalzip_path=$(ls "${ROM_DIR}"/out/dist/aosp_river-retrofit-ota-eng.kiam001.zip | tail -n -1)
-export zip_name=$(echo "${finalzip_path}" | sed "s|${ROM_DIR}/out/dist/||")
-export tag=$( echo "${zip_name}-$(date +%H%M)" | sed 's|.zip||')
-if [ -e "${finalzip_path}" ]; then
+export bootimage_path=$(ls "${outdir}"/boot.img | tail -n -1)
+if [ -e "${bootimage_path}" ]; then
     echo "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
-
-    echo "Uploading"
-
-    github-release "${release_repo}" "${tag}" "master" "${ROM} for ${device}
-Date: $(env TZ="${timezone}" date)" "${finalzip_path}"
-
-    echo "Uploaded"
-
-    telegram -M "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds
-
-Download: ["${zip_name}"]("https://github.com/${release_repo}/releases/download/${tag}/${zip_name}")"
+    telegram -M "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
     curl --data parse_mode=HTML --data chat_id=$TELEGRAM_CHAT --data sticker=CAADBQADGgEAAixuhBPbSa3YLUZ8DBYE --request POST https://api.telegram.org/bot$TELEGRAM_TOKEN/sendSticker
 else
     echo "Build failed in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"

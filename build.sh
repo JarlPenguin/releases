@@ -24,8 +24,7 @@ elif [ "${ccache}" == "true" ] && [ -z "${ccache_size}" ]; then
     exit 1
 fi
 lunch "${rom_vendor_name}_${device}-${buildtype}"
-rm "${outdir}"/*2021*.zip
-rm "${outdir}"/*2021*.zip.md5
+rm "${outdir}"/*$(date +%Y)*.zip*
 if [ "${clean}" == "clean" ]; then
     mka clean
     mka clobber
@@ -36,7 +35,7 @@ mka "${bacon}"
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))
 
-export finalzip_path=$(ls "${outdir}"/*2021*.zip | tail -n -1)
+export finalzip_path=$(ls "${outdir}"/*$(date +%Y)*.zip | tail -n -1)
 if [ "${upload_recovery}" == "true" ]; then
     export img_path=$(ls "${outdir}"/recovery.img | tail -n -1)
 fi

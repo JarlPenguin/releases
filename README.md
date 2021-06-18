@@ -89,6 +89,8 @@ OR
 
 `clean` - `installclean` if you want to clear system/ and vendor/ directories, `clean` if you want a clean build, `false` if you want a dirty build
 
+`generate_incremental` - `true` if you want the script to generate and upload an incremental update zip, `false` if you don't want the script to generate and upload an incremental update zip
+
 `upload_recovery` - `true` if you want the script to upload the built recovery image, `false` if you don't want the script to upload the recovery image
 
 `ccache` - `true` if you want to build with ccache, `false` if you don't

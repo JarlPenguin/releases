@@ -1,0 +1,35 @@
+name: Delete stale releases
+
+on:
+  schedule:
+    - cron: '0 0 31 3,6,9,12 *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Delete releases releases
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Install dependencies
+      run: |
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+        sudo apt-get update
+        sudo apt-get install gh dirmngr
+    - name: Configure GitHub CLI
+      run: |
+        gh config set prompt disabled
+        gh auth login --with-token "${GITHUB_TOKEN}"
+    - name: Delete stale releases
+      run: |
+        git config --global user.name "${GITHUB_USER}"
+        git config --global user.email "${GITHUB_EMAIL}"
+        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/"${GITHUB_USER}"/releases.git
+        cd releases
+        gh release list | sed 's/|/ /' | awk '{print $1, $8}' | while read -r line; do gh release delete -y "$line"; done
+        git fetch
+        git tag -l | xargs -n 1 git push --delete origin
+      env:
+        GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_KEY }}
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}

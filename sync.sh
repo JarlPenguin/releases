@@ -8,8 +8,8 @@ fi
 SYNC_START=$(date +"%s")
 if [ "${official}" != "true" ]; then
     mkdir -p .repo/local_manifests
-    if [ -f .repo/local_manifests/manifest.xml ]; then
-        rm .repo/local_manifests/manifest.xml
+    if [ -f .repo/local_manifests/* ]; then
+        rm .repo/local_manifests/*
     fi
     wget "${local_manifest_url}" -O .repo/local_manifests/manifest.xml
 fi

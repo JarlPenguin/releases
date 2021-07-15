@@ -7,10 +7,8 @@ else
 fi
 SYNC_START=$(date +"%s")
 if [ "${official}" != "true" ]; then
+    rm -rf .repo/local_manifests
     mkdir -p .repo/local_manifests
-    if [ -f .repo/local_manifests/* ]; then
-        rm .repo/local_manifests/*
-    fi
     wget "${local_manifest_url}" -O .repo/local_manifests/manifest.xml
 fi
 cores=$(nproc --all)

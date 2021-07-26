@@ -1,5 +1,7 @@
 #!/bin/bash
-git clone https://github.com/JarlPenguin/releases.git
+if [ ! -d "releases" ]; then
+    git clone https://github.com/JarlPenguin/releases.git
+fi
 cd releases
 chmod a+x bin/*
 export PATH="${PATH}:$(pwd)/bin"

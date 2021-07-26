@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-1. (Optional) Make a Telegram Bot (@BotFather)
+1. (Optional) Make a Telegram Bot ([@BotFather](https://t.me/BotFather)).
 
 2. Fork this repository.
 
@@ -48,7 +48,7 @@ OR
 
 7. Change the values of GITHUB_TOKEN and optionally TELEGRAM_CHAT, TELEGRAM_TOKEN to your respective values:
 
-* `GITHUB_TOKEN` - your GitHub token (make sure it has permissions to upload releases to your repos)
+* `GITHUB_TOKEN` - your GitHub token (make sure it has permissions to upload releases to your repos).
 
 * `TELEGRAM_CHAT` - the ID of the channel/group chat you want the Bot to post your messages to.
 

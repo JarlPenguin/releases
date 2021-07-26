@@ -44,7 +44,7 @@ OR
 
 5. Add a build step for bash.
 
-6. Copy the contents of jenkins.sh to it.
+6. Copy the contents of `jenkins.sh` to it.
 
 7. Change the values of GITHUB_TOKEN and optionally TELEGRAM_CHAT, TELEGRAM_TOKEN to your respective values:
 

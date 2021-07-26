@@ -38,7 +38,7 @@ BUILD_DIFF=$((BUILD_END - BUILD_START))
 if [ "${generate_incremental}" == "true" ]; then
     if [ -e "${ROM_DIR}"/*target_files*.zip ]; then
         export old_target_files_exists=true
-        export old_target_files_path=$(ls "${ROM_DIR}"/*target_files*.zip | tail -n -1)
+        export old_target_files_path=$(ls "${outdir}"/*target_files*.zip | tail -n -1)
     else
         echo "Old target-files package not found, generating incremental package on next build"
     fi

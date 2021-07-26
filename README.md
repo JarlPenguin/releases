@@ -14,9 +14,9 @@
 
 1. Clone your fork of this repository.
 
-2. Make your changes in the config.sh script (more information about the flags below). Make sure you commit and push your changes to your fork.
+2. Make your changes in `config.sh` (more information about the flags below). Make sure you commit and push your changes to your fork.
 
-3. Export GITHUB_TOKEN to your GitHub token (make sure it has permissions to upload releases to your repos)
+3. Export GITHUB_TOKEN to your GitHub token (make sure it has permissions to upload releases to your repos).
 
 4. Optionally export TELEGRAM_CHAT and TELEGRAM_TOKEN to your respective values:
 
@@ -24,40 +24,37 @@
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
 
-5. If you haven't ever built Android on your PC, open a terminal in the directory you cloned this repository and run `init.sh`
+5. If you haven't ever built Android on your PC, open a terminal in the directory you cloned this repository and run `setup.sh`.
+
+6. Then run `init.sh` from the same folder.
 
 OR
 
-5. If you've already built Android on your PC, run `clean.sh`
-
+5. If you've already built Android on your PC, run `init.sh`.
 
 ## How to use this repo (Jenkins)
 
-1. Switch to the "jenkins" user (usually by `su jenkins`)
+1. Clone your fork of this repository.
 
-2. Clone your fork of this repo in your Jenkins home directory (`/var/lib/jenkins`) or any place where your Jenkins user can read/write to.
+2. Make your changes in `config.sh` (more information about the flags below). Make sure you commit and push your changes to your fork.
 
-3. Make your changes in the config.sh script (more information about the flags below). Make sure you commit and push your changes to your fork.
+3. Open the Jenkins web console.
 
-4. Switch to the Jenkins web console.
+4. Make a new job with the "Freeflow" type. Do **NOT** put spaces in the name of the job.
 
-5. Make a new job with the "Freeflow" type. Do **NOT** put spaces in the name of the job.
+5. Set the custom working directory to the directory you cloned this repository.
 
-6. Set the custom working directory to the directory you cloned this repository.
+6. Add a build step for bash.
 
-7. Add a build step for bash.
+7. Copy the contents of jenkins.sh to it.
 
-8. Copy the contents of jenkins.sh to it.
-
-9. Change the values of GITHUB_TOKEN and optionally TELEGRAM_CHAT, TELEGRAM_TOKEN to your respective values:
+8. Change the values of GITHUB_TOKEN and optionally TELEGRAM_CHAT, TELEGRAM_TOKEN to your respective values:
 
 * `GITHUB_TOKEN` - your GitHub token (make sure it has permissions to upload releases to your repos)
 
 * `TELEGRAM_CHAT` - the ID of the channel/group chat you want the Bot to post your messages to.
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
-
-10. Switch to the root user and install the binaries in the `bin` folder to `/usr/bin`.
 
 ## Configuration flags
 

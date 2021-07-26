@@ -1,20 +1,24 @@
 #!/bin/bash
+
 export my_dir=$(pwd)
-cd ~
-echo "Downloading dependencies..."
-git clone https://github.com/akhilnarang/scripts --depth 1
-cd scripts
-echo "Installing dependencies..."
-source setup/android_build_env.sh
-cd ..
-rm -rf scripts
-sudo apt purge openjdk-11* -y
-sudo apt install openjdk-8-jdk -y
-cd "${my_dir}"
-if [ ! -f /usr/bin/telegram ]; then
-    sudo install bin/telegram /usr/bin
-elif [ ! -f /usr/bin/github-release ]; then
-    sudo install bin/github-release /usr/bin
+
+echo "Loading configuration..."
+source "${my_dir}"/config.sh
+
+if [ -z "${GITHUB_TOKEN}" ]; then
+    echo "Please set GITHUB_TOKEN before continuing."
+    exit 1
 fi
-echo "Starting build process..."
-source clean.sh
+
+git config --global user.email "${GITHUB_EMAIL}"
+git config --global user.name "${GITHUB_USER}"
+
+mkdir -p "${ROM_DIR}"
+cd "${ROM_DIR}"
+
+if [ ! -d "${ROM_DIR}/.repo" ]; then
+echo "Initializing repository..."
+repo init -u "${manifest_url}" -b "${branch}" --depth 1
+fi
+
+source "${my_dir}"/sync.sh

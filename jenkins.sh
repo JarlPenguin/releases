@@ -1,4 +1,6 @@
 #!/bin/bash
+git clone https://github.com/JarlPenguin/releases.git
+cd releases
 chmod a+x bin/*
 export PATH="${PATH}:$(pwd)/bin"
 export branch=$(git branch | grep \* | cut -d ' ' -f2)

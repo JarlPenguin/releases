@@ -56,6 +56,8 @@ OR
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
 
+9. Edit the `git clone` command for your fork.
+
 ## Configuration flags
 
 `GITHUB_USER` - your GitHub username

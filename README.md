@@ -42,13 +42,11 @@ OR
 
 4. Make a new job with the "Freeflow" type. Do **NOT** put spaces in the name of the job.
 
-5. Set the custom working directory to the directory you cloned this repository.
+5. Add a build step for bash.
 
-6. Add a build step for bash.
+6. Copy the contents of jenkins.sh to it.
 
-7. Copy the contents of jenkins.sh to it.
-
-8. Change the values of GITHUB_TOKEN and optionally TELEGRAM_CHAT, TELEGRAM_TOKEN to your respective values:
+7. Change the values of GITHUB_TOKEN and optionally TELEGRAM_CHAT, TELEGRAM_TOKEN to your respective values:
 
 * `GITHUB_TOKEN` - your GitHub token (make sure it has permissions to upload releases to your repos)
 
@@ -56,7 +54,7 @@ OR
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
 
-9. Edit the `git clone` command for your fork.
+8. Edit the `git clone` command for your fork.
 
 ## Configuration flags
 

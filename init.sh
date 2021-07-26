@@ -16,9 +16,4 @@ git config --global user.name "${GITHUB_USER}"
 mkdir -p "${ROM_DIR}"
 cd "${ROM_DIR}"
 
-if [ ! -d "${ROM_DIR}/.repo" ]; then
-echo "Initializing repository..."
-repo init -u "${manifest_url}" -b "${branch}" --depth 1
-fi
-
 source "${my_dir}"/sync.sh

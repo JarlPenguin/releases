@@ -52,11 +52,10 @@ if [ "${generate_incremental}" == "true" ]; then
 fi
 export finalzip_path=$(ls "${outdir}"/*$(date +%Y)*.zip | tail -n -1)
 if [ "${upload_recovery}" == "true" ]; then
-    if [ -e "${outdir}"/recovery.img ]; then
-        export img_path=$(ls "${outdir}"/recovery.img | tail -n -1)
-    else
-        export img_path=$(ls "${outdir}"/boot.img | tail -n -1)
+    if [ ! -e "${outdir}"/recovery.img ]; then
+        cp "${outdir}"/boot.img "${outdir}"/recovery.img
     fi
+    export img_path=$(ls "${outdir}"/recovery.img | tail -n -1)
 fi
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
 export tag=$( echo "${zip_name}-$(date +%H%M)" | sed 's|.zip||')

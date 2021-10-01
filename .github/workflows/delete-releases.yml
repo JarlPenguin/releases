@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: '0 0 31 3,6,9,12 *'
   workflow_dispatch:
+    branches:
+      - master
 
 jobs:
   build:
@@ -19,17 +21,16 @@ jobs:
     - name: Configure GitHub CLI
       run: |
         gh config set prompt disabled
-        gh auth login --with-token "${GITHUB_TOKEN}"
     - name: Delete stale releases
       run: |
-        git config --global user.name "${GITHUB_USER}"
-        git config --global user.email "${GITHUB_EMAIL}"
-        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/"${GITHUB_USER}"/releases.git
+        git config --global user.name "${GH_USER}"
+        git config --global user.email "${GH_USER}@users.noreply.github.com"
+        git clone https://"${GH_USER}:${GH_TOKEN}"@github.com/"${GITHUB_REPOSITORY}" releases
         cd releases
         gh release list | sed 's/|/ /' | awk '{print $1, $8}' | while read -r line; do gh release delete -y "$line"; done
         git fetch
         git tag -l | xargs -n 1 git push --delete origin
       env:
-        GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_KEY }}
-        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_USER: ${{ secrets.GH_USER }}

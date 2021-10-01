@@ -1,6 +1,9 @@
 name: Upstream
 
 on:
+  workflow_dispatch:
+    branches:
+      - master
   push:
     branches:
       - master
@@ -16,13 +19,14 @@ jobs:
         sudo apt-get install git
     - name: Upstream branches
       run: |
-        git config --global user.name "${GITHUB_USER}"
-        git config --global user.email "${GITHUB_EMAIL}"
-        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/"${GITHUB_USER}"/releases.git
+        git config --global user.name "${GH_USER}"
+        git config --global user.email "${GH_USER}@users.noreply.github.com"
+        git clone https://"${GH_USER}":"${GH_TOKEN}"@github.com/"${GITHUB_REPOSITORY}" releases
         cd releases
-        function upstream() { for var in cedric-los18 montana-los18 montana-los18-4.9 river-los17; do git checkout $var; git rebase master; git push -f; done; git checkout master; }
+        git remote add jarl https://github.com/JarlPenguin/releases
+        git fetch jarl
+        function upstream() { for var in cedric-los18 montana-los18 montana-los18-4.9 river-los17; do git checkout origin/$var; git rebase jarl/master; git push -f origin HEAD:$var; done; git checkout master; }
         upstream
       env:
-        GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_KEY }}
-        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_USER: ${{ secrets.GH_USER }}

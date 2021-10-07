@@ -25,14 +25,13 @@ elif [ "${ccache}" == "true" ] && [ -z "${ccache_size}" ]; then
 fi
 lunch "${rom_vendor_name}_${device}-${buildtype}"
 if [ "${clean}" == "clean" ]; then
-    mka clean
-    mka clobber
+    m clean -j$(nproc --all)
 elif [ "${clean}" == "installclean" ]; then
-    mka installclean
+    m installclean -j$(nproc --all)
 else
     rm "${outdir}"/*$(date +%Y)*.zip*
 fi
-mka "${bacon}"
+m "${bacon}" -j$(nproc --all)
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))
 

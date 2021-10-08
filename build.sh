@@ -49,9 +49,9 @@ if [ "${generate_incremental}" == "true" ]; then
     fi
     cp "${new_target_files_path}" "${ROM_DIR}"
 fi
-if [ -e "${outdir}"/*"$(date +%Y)"*.zip ]; then
+if [ -e "${outdir}"/*$(date +%Y)*.zip ]; then
     export finalzip_path=$(ls "${outdir}"/*$(date +%Y)*.zip | tail -n -1)
-elif [ -e "${outdir}"/*"${device}"-ota-*.zip ]; then
+else
     export finalzip_path=$(ls "${outdir}"/*"${device}"-ota-*.zip | tail -n -1)
 fi
 if [ "${upload_recovery}" == "true" ]; then

@@ -49,7 +49,11 @@ if [ "${generate_incremental}" == "true" ]; then
     fi
     cp "${new_target_files_path}" "${ROM_DIR}"
 fi
-export finalzip_path=$(ls "${outdir}"/*$(date +%Y)*.zip | tail -n -1)
+if [ -e "${outdir}/*$(date +%Y)*.zip" ]; then
+    export finalzip_path=$(ls "${outdir}"/*$(date +%Y)*.zip | tail -n -1)
+elif [ -e "${outdir}/*${device}-ota-*.zip" ]; then
+    export finalzip_path=$(ls "${outdir}"/*"${device}"-ota-*.zip | tail -n -1)
+fi
 if [ "${upload_recovery}" == "true" ]; then
     if [ ! -e "${outdir}"/recovery.img ]; then
         cp "${outdir}"/boot.img "${outdir}"/recovery.img
@@ -58,7 +62,7 @@ if [ "${upload_recovery}" == "true" ]; then
 fi
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
 export tag=$( echo "$(date +%H%M)-${zip_name}" | sed 's|.zip||')
-if [ -e "${finalzip_path}" ]; then
+if [ ! -z "${finalzip_path}" ]; then
     echo "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
 
     echo "Uploading"

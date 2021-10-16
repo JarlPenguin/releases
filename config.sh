@@ -9,8 +9,8 @@ export ROM="bliss"
 export ROM_DIR="/var/lib/jenkins/bliss"
 export ROM_VERSION="11"
 export official="false"
-export local_manifest_url="https://raw.githubusercontent.com/BlissRoms/platform_manifest/r/default.xml"
-export manifest_url="repo init -u https://github.com/BlissRoms/platform_manifest.git -b r"
+export local_manifest_url="https://raw.githubusercontent.com/SirRGB/local_manifests/main/cheeseburgerdumpling/A11Bliss.xml"
+export manifest_url="https://github.com/BlissRoms/platform_manifest"
 export rom_vendor_name="bliss"
 export branch="r"
 export bacon="bacon"
@@ -24,6 +24,6 @@ export ccache_size="50"
 
 export jenkins="true"
 
-export release_repo="https://github.com/lobo1978-coder/releases"
+export release_repo="lobo1978-coder/releases"
 
 export timezone="UTC"

@@ -32,6 +32,7 @@ else
     rm "${outdir}"/*$(date +%Y)*.zip*
 fi
 m "${bacon}" -j$(nproc --all)
+buildsuccessful="${?}"
 BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))
 
@@ -62,7 +63,7 @@ if [ "${upload_recovery}" == "true" ]; then
 fi
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
 export tag=$( echo "$(date +%Y%m%d%H%M)-${zip_name}" | sed 's|.zip||')
-if [ ! -z "${finalzip_path}" ]; then
+if [ "${buildsuccessful}" == "0" ] && [ ! -z "${finalzip_path}" ]; then
     echo "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
 
     echo "Uploading"

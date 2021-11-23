@@ -23,7 +23,11 @@ elif [ "${ccache}" == "true" ] && [ -z "${ccache_size}" ]; then
     echo "Please set the ccache_size variable in your config."
     exit 1
 fi
-lunch "${rom_vendor_name}_${device}-${buildtype}"
+if [ ! -z "${rom_vendor_name}" ]; then
+    lunch "${rom_vendor_name}_${device}-${buildtype}"
+else
+    lunch "${device}-${buildtype}"
+fi
 if [ "${clean}" == "clean" ]; then
     m clean -j$(nproc --all)
 elif [ "${clean}" == "installclean" ]; then

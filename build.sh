@@ -32,6 +32,7 @@ if [ "${clean}" == "clean" ]; then
     m clean -j$(nproc --all)
 elif [ "${clean}" == "installclean" ]; then
     m installclean -j$(nproc --all)
+    rm -rf out/target/product/"${device}"/obj/DTBO_OBJ
 else
     rm "${outdir}"/*$(date +%Y)*.zip*
 fi

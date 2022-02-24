@@ -70,8 +70,6 @@ OR
 
 `ROM_VERSION` - version of your ROM (e.g. `9.0 Pie`)
 
-`official` - `true` if you're building an official build, `false` if you're building an unofficial build
-
 `local_manifest_url` - your local manifest URL (e.g. `https://example.link/local_manifest.xml`)
 
 `manifest_url` - your ROM's manifest repo URL (e.g. `https://android.googlesource.com/platform/manifest`)

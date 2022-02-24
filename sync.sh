@@ -6,12 +6,12 @@ else
     telegram -M "Sync started for [${ROM} ${ROM_VERSION}](${manifest_url}/tree/${branch})"
 fi
 SYNC_START=$(date +"%s")
-repo init -u "${manifest_url}" -b "${branch}" --depth 1
 if [ "${official}" != "true" ]; then
     rm -rf .repo/local_manifests
     mkdir -p .repo/local_manifests
     wget "${local_manifest_url}" -O .repo/local_manifests/manifest.xml
 fi
+repo init -u "${manifest_url}" -b "${branch}" --depth 1
 cores=$(nproc --all)
 if [ "${cores}" -gt "8" ]; then
     cores=8

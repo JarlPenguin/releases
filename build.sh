@@ -37,6 +37,7 @@ elif [ "${clean}" == "installclean" ]; then
 else
     rm "${outdir}"/*.zip*
 fi
+repopick -f 22013
 m "${bacon}" -j$(nproc --all)
 buildsuccessful="${?}"
 BUILD_END=$(date +"%s")

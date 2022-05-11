@@ -1,20 +1,15 @@
 #!/bin/bash
 if [ ! -d "releases" ]; then
-    git clone https://github.com/JarlPenguin/releases.git
+    git clone https://github.com/JarlPenguin/releases.git -b master
 fi
 cd releases
 curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo
 chmod a+x bin/*
-export PATH="${PATH}:$(pwd)/bin"
+export PATH="$(pwd)/bin:${PATH}"
 export branch=$(git branch | grep \* | cut -d ' ' -f2)
-git checkout -- .
-git fetch --all
-git checkout origin/"${branch}"
+git restore .
+git fetch origin "${branch}"
+git checkout FETCH_HEAD
 git branch -D "${branch}"
 git checkout -b "${branch}"
-source config.sh
-export GITHUB_TOKEN=""
-export TELEGRAM_TOKEN=""
-export TELEGRAM_CHAT=""
 export BUILD_NUMBER=""
-source init.sh

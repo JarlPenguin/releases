@@ -1,28 +1,30 @@
 #!/bin/bash
 
-export GITHUB_USER=""
-export GITHUB_EMAIL=""
+# Build
+export build_ccache=""
+export build_ccache_size=""
+export build_directory=""
+export buuld_incremental=""
+export build_jenkins=""
+export build_target=""
+export build_type=""
 
-export device=""
+# Device
+export device_codename=""
+export device_manifest=""
 
-export ROM=""
-export ROM_DIR=""
-export ROM_VERSION=""
-export local_manifest_url=""
-export manifest_url=""
-export rom_vendor_name=""
-export branch=""
-export bacon="bacon"
-export buildtype=""
-export clean=""
-export generate_incremental=""
+# ROM
+export rom_branch=""
+export rom_manifest=""
+export rom_name=""
+export rom_prefix=""
+export rom_version=""
+
+# Upload
+export upload_repository=""
 export upload_recovery=""
 
-export ccache=""
-export ccache_size=""
-
-export jenkins="false"
-
-export release_repo=""
-
-export timezone="UTC"
+# User
+export user_github_username=""
+export user_github_email=""
+export user_telegram_chat_id=""

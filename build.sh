@@ -13,6 +13,9 @@ source "${my_dir}/config.sh"
 if [ -z "${buildtype}" ]; then
     export buildtype="userdebug"
 fi
+if [ "${ccache}" == "false" ]; then
+    export USE_CCACHE=0
+fi
 if [ "${ccache}" == "true" ] && [ -n "${ccache_size}" ]; then
     export USE_CCACHE=1
     ccache -M "${ccache_size}G"

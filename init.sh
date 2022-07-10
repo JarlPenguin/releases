@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export my_dir=$(pwd)
+export PATH="$(pwd)/bin:${PATH}"
 
 echo "Loading configuration..."
 source "${my_dir}"/config.sh

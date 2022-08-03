@@ -5,7 +5,6 @@ fi
 cd releases
 curl https://storage.googleapis.com/git-repo-downloads/repo > bin/repo
 chmod a+x bin/*
-export PATH="${PATH}:$(pwd)/bin"
 export branch=$(git branch | grep \* | cut -d ' ' -f2)
 git checkout -- .
 git fetch --all

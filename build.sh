@@ -43,9 +43,9 @@ BUILD_END=$(date +"%s")
 BUILD_DIFF=$((BUILD_END - BUILD_START))
 
 if [ "${generate_incremental}" == "true" ]; then
-    if [ -e "${ROM_DIR}"/*"${device}"*target_files*.zip ]; then
+    if [ -e "${my_dir}"/*"${device}"*target_files*.zip ]; then
         export old_target_files_exists=true
-        export old_target_files_path=$(ls "${ROM_DIR}"/*"${device}"*target_files*.zip | tail -n -1)
+        export old_target_files_path=$(ls "${my_dir}"/*"${device}"*target_files*.zip | tail -n -1)
     else
         echo "Old target-files package not found, generating incremental package on next build"
     fi
@@ -54,7 +54,7 @@ if [ "${generate_incremental}" == "true" ]; then
         ota_from_target_files -i "${old_target_files_path}" "${new_target_files_path}" "${outdir}"/incremental_ota_update.zip
         export incremental_zip_path=$(ls "${outdir}"/incremental_ota_update.zip | tail -n -1)
     fi
-    cp "${new_target_files_path}" "${ROM_DIR}"
+    cp "${new_target_files_path}" "${my_dir}"
 fi
 if [ -e "${outdir}"/*$(date +%Y)*.zip ]; then
     export finalzip_path=$(ls "${outdir}"/*$(date +%Y)*.zip | tail -n -1)

@@ -74,12 +74,12 @@ if [ "${buildsuccessful}" == "0" ] && [ ! -z "${finalzip_path}" ]; then
 
     echo "Uploading"
 
-    github-release "${release_repo}" "${tag}" "master" "${ROM} for ${device}
+    github-release "${release_repo}" "${tag}" "main" "${ROM} for ${device}
 
 Date: $(env TZ="${timezone}" date)" "${finalzip_path}"
     if [ "${generate_incremental}" == "true" ]; then
         if [ -e "${incremental_zip_path}" ] && [ "${old_target_files_exists}" == "true" ]; then
-            github-release "${release_repo}" "${tag}" "master" "${ROM} for ${device}
+            github-release "${release_repo}" "${tag}" "main" "${ROM} for ${device}
 
 Date: $(env TZ="${timezone}" date)" "${incremental_zip_path}"
         elif [ ! -e "${incremental_zip_path}" ] && [ "${old_target_files_exists}" == "true" ]; then
@@ -91,7 +91,7 @@ Date: $(env TZ="${timezone}" date)" "${incremental_zip_path}"
     fi
     if [ "${upload_recovery}" == "true" ]; then
         if [ -e "${img_path}" ]; then
-            github-release "${release_repo}" "${tag}" "master" "${ROM} for ${device}
+            github-release "${release_repo}" "${tag}" "main" "${ROM} for ${device}
 
 Date: $(env TZ="${timezone}" date)" "${img_path}"
         else

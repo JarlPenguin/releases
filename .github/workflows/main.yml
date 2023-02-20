@@ -16,13 +16,13 @@ jobs:
         sudo apt-get install git
     - name: Upstream branches
       run: |
-        git config --global user.name "${GITHUB_USER}"
-        git config --global user.email "${GITHUB_EMAIL}"
-        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/"${GITHUB_USER}"/releases.git
+        git config --global user.name "${USERNAME}"
+        git config --global user.email "${EMAIL}"
+        git clone https://"${USERNAME}":"${TOKEN}"@github.com/"${USERNAME}"/releases.git
         cd releases
         function upstream() { for var in montana-lineageos18-4.9 nio-pe12 nio-pe13; do git checkout $var; git rebase main; git push -f; done; git checkout main; }
         upstream
       env:
-        GITHUB_EMAIL: ${{ secrets.GITHUB_EMAIL }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_KEY }}
-        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        EMAIL: ${{ secrets.EMAIL }}
+        TOKEN: ${{ secrets.TOKEN }}
+        USERNAME: ${{ secrets.USERNAME }}

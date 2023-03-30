@@ -68,6 +68,8 @@ if [ "${upload_recovery}" == "true" ]; then
     export img_path=$(ls "${outdir}"/recovery.img | tail -n -1)
 fi
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
+split ${finalzip_path} ${finalzip_path} -C 1GB
+rm ${finalzip_path}
 export tag=$( echo "$(env TZ="${timezone}" date +%Y%m%d%H%M)-${zip_name}" | sed 's|.zip||')
 if [ "${buildsuccessful}" == "0" ] && [ ! -z "${finalzip_path}" ]; then
     echo "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
@@ -76,7 +78,7 @@ if [ "${buildsuccessful}" == "0" ] && [ ! -z "${finalzip_path}" ]; then
 
     github-release "${release_repo}" "${tag}" "main" "${ROM} for ${device}
 
-Date: $(env TZ="${timezone}" date)" "${finalzip_path}"
+Date: $(env TZ="${timezone}" date)" "${finalzip_path}*"
     if [ "${generate_incremental}" == "true" ]; then
         if [ -e "${incremental_zip_path}" ] && [ "${old_target_files_exists}" == "true" ]; then
             github-release "${release_repo}" "${tag}" "main" "${ROM} for ${device}

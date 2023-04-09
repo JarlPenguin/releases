@@ -24,7 +24,7 @@
 
 * `TELEGRAM_TOKEN` - the token of your Telegram Bot.
 
-5. If you haven't ever built Android on your PC, open a terminal in the directory you cloned this repository and run `setup.sh`.
+5. If you haven't ever built Android on your PC, have a look [here](https://source.android.com/docs/setup/start/initializing) on how to setup your PC for Android building.
 
 6. Then run `init.sh` from the same folder.
 

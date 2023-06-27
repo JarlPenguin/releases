@@ -34,9 +34,8 @@ if [ "${clean}" == "clean" ]; then
 elif [ "${clean}" == "installclean" ]; then
     m installclean -j$(nproc --all)
     rm -rf out/target/product/"${device}"/obj/DTBO_OBJ
-else
-    rm "${outdir}"/*.zip*
 fi
+rm -f "${outdir}"/*.zip*
 m "${bacon}" -j$(nproc --all)
 buildsuccessful="${?}"
 BUILD_END=$(date +"%s")

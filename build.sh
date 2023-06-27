@@ -35,7 +35,7 @@ elif [ "${clean}" == "installclean" ]; then
     m installclean -j$(nproc --all)
     rm -rf out/target/product/"${device}"/obj/DTBO_OBJ
 else
-    rm "${outdir}"/*$(date +%Y)*.zip*
+    rm "${outdir}"/*.zip*
 fi
 m "${bacon}" -j$(nproc --all)
 buildsuccessful="${?}"
@@ -68,10 +68,10 @@ if [ "${upload_recovery}" == "true" ]; then
     export img_path=$(ls "${outdir}"/recovery.img | tail -n -1)
 fi
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
-rm ${finalzip_path}
 export tag=$( echo "$(env TZ="${timezone}" date +%Y%m%d%H%M)-${zip_name}" | sed 's|.zip||')
 if [ "${buildsuccessful}" == "0" ] && [ ! -z "${finalzip_path}" ]; then
     split ${finalzip_path} ${finalzip_path} -C 2GB
+    rm ${finalzip_path}
 
     echo "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
 

@@ -9,6 +9,7 @@ else
     telegram -M "Build started for ${device}"
 fi
 source build/envsetup.sh
+repopick -f 327024 410692 410693
 source "${my_dir}/config.sh"
 if [ -z "${buildtype}" ]; then
     export buildtype="userdebug"
@@ -16,6 +17,7 @@ fi
 if [ "${ccache}" == "true" ] && [ -n "${ccache_size}" ]; then
     export USE_CCACHE=1
     ccache -M "${ccache_size}G"
+    export CCACHE_DIR="/mnt/ccache"
 elif [ "${ccache}" == "true" ] && [ -z "${ccache_size}" ]; then
     echo "Please set the ccache_size variable in your config."
     exit 1

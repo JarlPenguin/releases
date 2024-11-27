@@ -1,28 +1,28 @@
 #!/bin/bash
 
-export GITHUB_USER=""
-export GITHUB_EMAIL=""
+export GITHUB_USER="JarlPenguin"
+export GITHUB_EMAIL="jarlpenguin@outlook.com"
 
-export device=""
+export device="montana"
 
-export ROM=""
-export ROM_DIR=""
-export ROM_VERSION=""
-export local_manifest_url=""
-export manifest_url=""
-export rom_vendor_name=""
-export branch=""
+export ROM="LineageOS"
+export ROM_DIR="/mnt/data/jarl/lineage-19.1"
+export ROM_VERSION="19.1"
+export local_manifest_url="https://github.com/JarlPenguin/manifests/raw/master/lineage/19.x/msm8937-common.xml"
+export manifest_url="https://github.com/LineageOS/android"
+export rom_vendor_name="lineage"
+export branch="lineage-19.1"
 export bacon="bacon"
 export buildtype=""
-export clean=""
-export generate_incremental=""
-export upload_recovery=""
+export clean="installclean"
+export generate_incremental="false"
+export upload_recovery="true"
 
-export ccache=""
-export ccache_size=""
+export ccache="true"
+export ccache_size="100"
 
 export jenkins="false"
 
-export release_repo=""
+export release_repo="JarlPenguin/releases"
 
 export timezone="UTC"

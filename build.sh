@@ -69,7 +69,8 @@ fi
 export zip_name=$(echo "${finalzip_path}" | sed "s|${outdir}/||")
 export tag=$( echo "$(env TZ="${timezone}" date +%Y%m%d%H%M)-${zip_name}" | sed 's|.zip||')
 if [ "${buildsuccessful}" == "0" ] && [ ! -z "${finalzip_path}" ]; then
-    split ${finalzip_path} ${finalzip_path} -C 2GB
+    size=$(du -BG ${finalzip_path} | cut -dG -f1)
+    [ "${size}" -ge 2 ] && split ${finalzip_path} ${finalzip_path} -C 2GB
     rm ${finalzip_path}
 
     echo "Build completed successfully in $((BUILD_DIFF / 60)) minute(s) and $((BUILD_DIFF % 60)) seconds"
